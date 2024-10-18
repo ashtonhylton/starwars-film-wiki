@@ -1,0 +1,21 @@
+<ng-container *ngIf="character$ | async as character; else loading">
+  <div class="character col text-center">
+    <a class="card mb-4" (click)="selectCharacter(character)">
+      <img
+        src="/assets/images/characters/{{ character.url | getIdFromUrl }}.png"
+        class="card-img-top"
+        alt="Character Placeholder"
+        (error)="replacePicture($event.target)"
+      />
+      <div class="card-body">
+        <p class="card-title">
+          {{ character.name }}
+        </p>
+      </div>
+    </a>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

@@ -1,0 +1,32 @@
+<app-loading
+  *ngIf="store.isLoadingFilms(); else mainContent"
+  [loading]="store.isLoadingFilms()"
+></app-loading>
+
+<ng-template #mainContent>
+  <div class="container text-center">
+    <div class="row row-cols-3">
+      @for (film of store.films(); track film.title) {
+      <div class="film-container col">
+        <a class="card mb-4" [routerLink]="['film-details/' + film.id]">
+          <img
+            src="/assets/images/films/{{ film.url | getIdFromUrl }}.jpg"
+            class="card-img-top"
+            alt="Image of {{ film.title }} Film"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              {{ film.title }}
+            </h5>
+          </div>
+        </a>
+      </div>
+      }
+    </div>
+  </div>
+</ng-template>
+
+@if(store.films() && featuredFilmId) {
+<h2>Featured Film</h2>
+<app-film-details [id]="featuredFilmId" [simplifiedLayout]="true"></app-film-details>
+}

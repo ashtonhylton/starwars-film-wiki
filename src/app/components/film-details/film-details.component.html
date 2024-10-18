@@ -1,0 +1,47 @@
+<div
+  *ngIf="film$ | async as filmDetails; else loading"
+  class="container-fluid pb-3"
+>
+  <div *ngIf="!simplifiedLayout" class="go-back-button row mb-3">
+    <a [routerLink]="['/']">< Go Back</a>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <img
+        src="/assets/images/films/{{ filmDetails.url | getIdFromUrl }}.jpg"
+        class="card-img-top"
+        alt="Image of {{ filmDetails.title }} Film"
+      />
+    </div>
+    <div class="col-8">
+      <h2>{{ filmDetails.title }}</h2>
+      <div class="text-content">
+        <p>{{ filmDetails.opening_crawl }}</p>
+        <p><strong>Episode:</strong> {{ filmDetails.episode_id }}</p>
+        <p><strong>Director:</strong> {{ filmDetails.director }}</p>
+        <p><strong>Release Date:</strong> {{ filmDetails.release_date }}</p>
+      </div>
+      <div *ngIf="!simplifiedLayout" class="characters row">
+        <h4>Characters</h4>
+        <p>Scroll characters left to right</p>
+        <div class="characters-container row row-cols-4">
+          @for(character of filmDetails.characters; track $index){
+          <app-character-icons
+            [characterId]="character | getIdFromUrl"
+            (characterSelected)="selectCharacter($event)"
+          ></app-character-icons>
+          }
+        </div>
+
+        <app-character-details
+          [(selectedCharacter)]="selectedCharacter"
+        ></app-character-details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

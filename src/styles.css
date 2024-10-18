@@ -1,0 +1,59 @@
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+.container {
+  background-color: #000;
+}
+
+#main-logo img {
+  max-width: 400px;
+}
+
+.go-back-button a {
+  color: #ffe81f;
+  text-decoration: none;
+}
+
+.go-back-button a:visited {
+  color: #ffe81f;
+  text-decoration: none;
+}
+
+.film-container .card {
+  background-color: #ffe81f;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.characters-container {
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.characters {
+  overflow: hidden;
+}
+
+.characters-container .character button {
+  padding: 0;
+}
+
+.characters-container .character .card,
+.character-details .card {
+  background-color: #ffe81f;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.characters button.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}

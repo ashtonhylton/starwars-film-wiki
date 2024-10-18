@@ -1,0 +1,22 @@
+<div class="character-details" [ngbCollapse]="!selectedCharacter">
+  <h5>Character Details</h5>
+  <div class="card">
+    <div class="card-body">
+      <p><strong>Name: </strong> {{ selectedCharacter?.name }}</p>
+      <p><strong>Height:</strong> {{ selectedCharacter?.height }}</p>
+      <p>
+        <strong>Birth Year:</strong>
+        {{ selectedCharacter?.birth_year }}
+      </p>
+      <p>
+        <strong>Eye Colour:</strong>
+        {{ selectedCharacter?.eye_color }}
+      </p>
+      <p>
+        <strong>Hair Colour:</strong>
+        {{ selectedCharacter?.hair_color }}
+      </p>
+      <button class="btn btn-danger close" (click)="close()">X</button>
+    </div>
+  </div>
+</div>
